@@ -1,6 +1,6 @@
 #!/bin/bash
-#sudo apt-get install -y apache2
-#sudo cp -f wsite.html /var/www/html/index.html
+sudo apt-get install -y apache2
+sudo cp -f wsite.html /var/www/html/index.html
 for szam in {1..2};
 do
 	sudo mkdir /var/www/html/${szam}
