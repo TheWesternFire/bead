@@ -16,7 +16,6 @@ do
 done
 
 sudo echo '<br><a href="../index.html">Főoldal</a>' | sudo tee -a /var/www/html/3/3.html
-sudo ifconfig ens33 10.43.12.3 netmask 255.255.0.0
 
 wget "https://wordpress.org/latest.zip"
 unzip latest.zip
@@ -24,3 +23,4 @@ sudo mkdir /var/www/html/wordpress
 sudo cp -r wordpress/* /var/www/html/wordpress
 rm -f latest.zip
 rm -rf wordpress/
+sudo ifconfig ens33 10.43.12.3 netmask 255.255.0.0
