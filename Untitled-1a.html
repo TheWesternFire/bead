@@ -1,0 +1,214 @@
+<!--Készítette: Miklós Ilián -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My favorite game</title>
+
+    <style>
+        table, th, td {
+          border:2px solid black;
+        }
+        img {
+                border: 6px solid rgb(67, 74, 87);
+        }
+        body {    
+            background: linear-gradient(rgb(106, 118, 148), rgb(103, 128, 129));
+        }
+        </style>
+
+    <script>   
+        function hide_click(id, button) {
+            console.log(id, button)
+            var div = document.getElementById(id)
+
+            div.hidden = !div.hidden
+            if (button != undefined) {
+                if (div.hidden) {
+                    button.innerText = "Show"
+                }
+                else {
+                    button.innerText = "Hide"
+                }
+            }
+        }
+        function resize_pic(num) {
+            var pic = document.getElementById('game_pic')
+
+            switch (num) {
+                case 0: pic.style.width = '30%';  break;
+                case 1: pic.style.width= '60%';  break;
+                case 2: pic.style.width = '100%';  break;
+            }
+        }
+        function load_list() {
+            var sentences = document.getElementsByClassName('imp.rows')
+            var list              = document.getElementById('list')
+
+            if (sentences.length == 0) {
+                list.innerHTML = "The load's result: The list is empty."
+            }
+            else {
+                let inHtml = ""
+
+                for (let i = 0; i < sentences.length; i++) {
+                    inHtml += "<div>" + (i + 1) + ": " + sentences[i].innerText + "</div>"
+                }
+
+                list.innerHTML = inHtml
+            }
+        }
+        function submit() {
+            eredmenyek = document.getElementById('eredmenyek')
+            nev        = document.getElementById('inp_nev').value
+            email      = document.getElementById('inp_email').value
+            cim        = document.getElementById('inp_cim').value
+            szul_ev    = document.getElementById('inp_szul_datum').value
+            
+            if (nev == '') {
+                alert("Did not provide a name!")
+            }
+            else if (email == '') {
+                alert("Did not provide Email!")
+            }
+            else if (cim == '') {
+                alert("Did not provide address!")
+            }
+            else if (szul_ev == '') {
+                alert("Did not provide Date of Birth!")
+            }
+            else {
+                mail_check_l = email.split('@')
+                if (mail_check_l.length != 2) {
+                    alert("Wrong Email format!")
+                    return
+                }
+                else {
+                    domain = mail_check_l[1].split('.')
+                    if (domain.length < 2) {
+                        alert("Wrong Email format!")
+                        return
+                    }   
+                }               
+                eredmenyek.innerHTML =  "Név: " + nev + "<br>"
+                eredmenyek.innerHTML += `Email: ${email}<br>`
+                eredmenyek.innerHTML += `Cím:   ${cim}<br>`
+                eredmenyek.innerHTML += `Születési év: ${szul_ev}<br>`
+            }  
+        }
+    </script>
+</head>
+
+<body>
+    <table style="width:90%" align="center">
+<!--Cím-->
+        <h1 align="center" style="font-family:Arial, Helvetica, sans-serif"><u>My beloved game: Crysis 2</u></h1>
+<!--Videó-->
+<td>
+    <button onclick="hide_click('pic', this)" align="center">Hide</button>
+    <button onclick="resize_pic(0)">Small</button>
+             <button onclick="resize_pic(1)">Medium</button>
+             <button onclick="resize_pic(2)">Big</button>
+</td>
+        <th colspan="4">
+            <div id='pic'>
+            <img src="https://lh3.googleusercontent.com/hLMsh_JGUfHfQEndPUhTFZ92Fv7nMA_z5XZYY9m-_bdBB6xRfVkOdbtbvLvsgKlUmQc3ljPcswh8XRSy12BT5IVAdM4=w640-h400-e365-rj-sc0x00ffffff" id="game_pic" align="center">
+            </div>
+        </th>
+<!--Fejlécek-->
+        <tr>
+            <th style="width:20%">The story</th>
+            <th style="width:20%">System Requirements</th>
+            <th style="width:20%">Overall List</th>
+            <th style="width:20%">Textbox Test</th>
+            </tr>
+<!--Leírás-->
+        <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif">
+                <button onclick="hide_click('desc_div', this)">Hide</button>
+                <div id="desc_div">
+                    <span class="imp.rows">
+                 Following the events of the groundbreaking original Crysis,
+                aliens have returned to a world ravaged by climate disasters.
+                 As the invaders lay waste to New York and begin an assault that
+                threatens the total annihilation of humankind, only you have the
+                technology to lead the fightback. Playing as a super-soldier equipped
+                with the upgraded Nanosuit 2.0, you must adapt to the battlefield using
+                its game-changing Stealth, Armor, and Power abilities.
+                    </span>
+                 Crysis 2 takes place in New York City in 2023, which is infected by an unknown virus. 
+                The player controls Alcatraz, a Marine who is found almost dead by Prophet, 
+                and given the Nanosuit before Prophet commits suicide. 
+                He is tasked by Prophet to rescue a scientist named Nathan Gould. 
+                 At first, Alcatraz has to face CELL agents, 
+                a mercenary force who is hired by the U.S. Department of Defense to police the chaotic Manhattan, 
+                still thinking that Alcatraz is Prophet. 
+                After discovering Ceph capsules and Catalyst, the Ceph take over as the main antagonists for the rest of the game. 
+                 Alcatraz and Gould team up with Tara Strickland, an undercover CIA lieutenant, 
+                and Jacob Hargreave, the original creator of the nanosuit. 
+                Alcatraz eventually enters the Ceph core spire and wipes out all the Ceph in New York. 
+                Now facing death again, he meets a memory pattern of Prophet, whose DNA is merged into Alcatraz's.
+                <p hidden><span class="imp.rows">If interested in the game consider buying it from EA Store or Steam!</span></p>
+            </td> 
+<!--Minimum gépigény-->
+            <td> 
+                <button onclick="hide_click('specs_div', this)">Hide</button>
+                <div id="specs_div"; text-align: center>
+                <span class="imp.rows">
+                <u>Minimum Requirements: </u>  <br> 
+                <br>               
+               <u>CPU: </u>
+               AMD Athlon 64 x2 2 Ghz or better<br>
+               <br>
+               <u>RAM: </u>
+               2 GB of RAM<br> 
+               <br>
+               <u>Video Card: </u>
+               Nvidia GeForce 8800 GT 512 MB<br>
+               <br>
+               <u>Operating System: </u>
+               Windows XP, Vista or Windows 7<br>
+               <br>
+               <u>Tárhely: </u>
+               9 Gigabyte<br>
+                </span>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <!--Ezeket nem tudtam ennél szebben-->
+                </div> 
+
+            </td>
+<!--Lista betöltés-->
+            <td>
+
+                <div id="imp.rows"; text-align: center>
+                    <button onclick="load_list()"> Load </button>
+                    <div id="list" style="border: 1px solid gray; max-height: 160px;">
+                        Empty.
+                    </div>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <!--Ezeket nem tudtam ennél szebben-->
+                </div>
+
+            </td>
+<!--Dobozok és ellenőrzés-->
+            <td>
+            <div>
+            <h2><button onclick="hide_click('szoveg_div', this)"; text-align: center>Hide</button> Textbox test:</h2>
+            <div id="szoveg_div">
+
+                Name:<input type="text" id="inp_nev" /><br>
+
+                Email:<input type="text" id="inp_email"/><br>
+
+                Address:<input type="text" id="inp_cim"/><br>
+
+                D.O.B.:<input type="date" id="inp_szul_datum"/><br>
+
+                <button onclick="submit()">Verify</button> 
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <!--Ezeket nem tudtam ennél szebben-->
+            </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
